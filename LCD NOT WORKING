@@ -1,6 +1,9 @@
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);//Direccion de LCD
 #include "MQ135.h"
 
-#include <LiquidCrystal.h>
+//#include <LiquidCrystal.h>
 
 // MQ135 gas sensor
 //
@@ -18,12 +21,13 @@ MQ135 mq135_sensor = MQ135(PIN_MQ135);
 float temperature = 21.0; // assume current temperature. Recommended to measure with DHT22
 float humidity = 25.0; // assume current humidity. Recommended to measure with DHT22
 
-LiquidCrystal lcd(12, 11, 5, 4, 3 , 2 );          //LCD pins
-lcd.begin(20, 4);
-lcd.print("Calibrating...");
+// LiquidCrystal lcd(12, 11, 5, 4, 3 ,2 );           //LCD pins
+//lcd.begin(20,4);
+//lcd.print("Calibrating...");
 
 void setup() {
   Serial.begin(9600);
+  lcd.begin(16, 2); // Indicamos medidas de LCD
 }
 
 void loop() {
@@ -45,17 +49,22 @@ void loop() {
   Serial.print(correctedPPM);
   Serial.println("ppm CO2");
 
+  lcd.clear();//Elimina todos los simbolos del LCD
+  lcd.setCursor(0, 0); //Posiciona la primera letra despues del segmento 5 en linea 1
+  lcd.print("CO2");
+  lcd.setCursor(6, 1);
+  lcd.print(correctedPPM);//Escribe la humedad
+  lcd.print(" PPM");
+  delay (2500);
 
-  delay(1000);
+  //lcd.clear();
+  //lcd.setCursor( 0 , 0 );
+  //lcd.print("Concentration of gas ");
 
-  lcd.clear();
-  lcd.setCursor( 0 , 0 );
-  lcd.print("Concentration of gas ");
+  //lcd.setCursor( 0 , 1 );
+  //lcd.print("CO2: ");
+  //lcd.print(correctedPPM);
+  //lcd.print(" ppm");
 
-  lcd.setCursor( 0 , 1 );
-  lcd.print("CO2: ");
-  lcd.print(correctedPPM);
-  lcd.print(" ppm");
-
-  delay(200);
+  //delay(200);
 }

@@ -67,9 +67,10 @@ void loop()
   Serial.print(correctedPPM);
   Serial.println("ppm CO2");
   lcdI2C.clear();                          // Clear LCD screen.
-  lcdI2C.print("CO2");                   // Print print String to LCD on first line
+  lcdI2C.print("CO2 Gas Sensor");                   // Print print String to LCD on first line
   lcdI2C.selectLine(2);                    // Set cursor at the begining of line 2
-  lcdI2C.print(" PPM");                   // Print print String to LCD on second line
+  lcdI2C.print(correctedPPM);                   // Print print String to LCD on second line
+  lcdI2C.print("ppm CO2");
   delay(25000);
 
 }

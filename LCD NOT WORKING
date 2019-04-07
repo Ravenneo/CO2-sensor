@@ -1,9 +1,26 @@
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
-LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);//Direccion de LCD
+
+// Include Libraries
+#include "Arduino.h"
+#include "LiquidCrystal_PCF8574.h"
 #include "MQ135.h"
 
-//#include <LiquidCrystal.h>
+// Pin Definitions
+
+
+
+// Global variables and defines
+// There are several different versions of the LCD I2C adapter, each might have a different address.
+// Try the given addresses by Un/commenting the following rows until LCD works follow the serial monitor prints.
+// To find your LCD address go to: http://playground.arduino.cc/Main/I2cScanner and run example.
+//define LCD_ADDRESS 0x3F
+#define LCD_ADDRESS 0x27
+// Define LCD characteristics
+#define LCD_ROWS 2
+#define LCD_COLUMNS 16
+#define SCROLL_DELAY 150
+#define BACKLIGHT 255
+// object initialization
+LiquidCrystal_PCF8574 lcdI2C;
 
 // MQ135 gas sensor
 //
@@ -14,23 +31,24 @@ LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);//Direccion de LCD
 //
 // Original creator of this library: https://github.com/GeorgK/MQ135
 
-
 #define PIN_MQ135 A2
 MQ135 mq135_sensor = MQ135(PIN_MQ135);
 
 float temperature = 21.0; // assume current temperature. Recommended to measure with DHT22
 float humidity = 25.0; // assume current humidity. Recommended to measure with DHT22
 
-// LiquidCrystal lcd(12, 11, 5, 4, 3 ,2 );           //LCD pins
-//lcd.begin(20,4);
-//lcd.print("Calibrating...");
-
 void setup() {
   Serial.begin(9600);
-  lcd.begin(16, 2); // Indicamos medidas de LCD
-}
+  while (!Serial) ; // wait for serial port to connect. Needed for native USB
+  Serial.println("start");
 
-void loop() {
+  // initialize the lcd
+  lcdI2C.begin(LCD_COLUMNS, LCD_ROWS, LCD_ADDRESS, BACKLIGHT);
+}
+// Main logic of your circuit. It defines the interaction between the components you selected. After setup, it runs over and over again, in an eternal loop.
+
+void loop()
+{
   float rzero = mq135_sensor.getRZero();
   float correctedRZero = mq135_sensor.getCorrectedRZero(temperature, humidity);
   float resistance = mq135_sensor.getResistance();
@@ -48,23 +66,10 @@ void loop() {
   Serial.print("\t Corrected PPM: ");
   Serial.print(correctedPPM);
   Serial.println("ppm CO2");
+  lcdI2C.clear();                          // Clear LCD screen.
+  lcdI2C.print("CO2");                   // Print print String to LCD on first line
+  lcdI2C.selectLine(2);                    // Set cursor at the begining of line 2
+  lcdI2C.print(" PPM");                   // Print print String to LCD on second line
+  delay(25000);
 
-  lcd.clear();//Elimina todos los simbolos del LCD
-  lcd.setCursor(0, 0); //Posiciona la primera letra despues del segmento 5 en linea 1
-  lcd.print("CO2");
-  lcd.setCursor(6, 1);
-  lcd.print(correctedPPM);//Escribe la humedad
-  lcd.print(" PPM");
-  delay (2500);
-
-  //lcd.clear();
-  //lcd.setCursor( 0 , 0 );
-  //lcd.print("Concentration of gas ");
-
-  //lcd.setCursor( 0 , 1 );
-  //lcd.print("CO2: ");
-  //lcd.print(correctedPPM);
-  //lcd.print(" ppm");
-
-  //delay(200);
 }

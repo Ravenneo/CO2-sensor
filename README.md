@@ -1,6 +1,15 @@
 # CO2-sensor
 Lab CO2 Sensor
 
+-Instal MQ135 and Firmware Libraries in your Arduino Library folder
+-Run Lab CO2 Sensor.ino 
+-Lets MQ135 runs during 24h
+-Check in Serial Monitor your Rzero and substitute it in your MQ-135 Library. -Check global CO2 and do the same.
+-If LCD is on but does not show numbers, you should play with the IC2 potenciometer 
+-Wire in Arduino UNO (most of guides) it is different, the CristalLiquid screen is conected to Analogic IN. There are plenty of information in the links below 
+
+
+
 Help Links:
 
 

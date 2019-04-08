@@ -1,4 +1,3 @@
-
 // Include Libraries
 #include "Arduino.h"
 #include "LiquidCrystal_PCF8574.h"
@@ -55,12 +54,12 @@ void loop()
   float ppm = mq135_sensor.getPPM();
   float correctedPPM = mq135_sensor.getCorrectedPPM(temperature, humidity);
 
-  //Serial.print("MQ135 RZero: ");
-  //Serial.print(rzero);
-  //Serial.print("\t Corrected RZero: ");
-  //Serial.print(correctedRZero);
-  //Serial.print("\t Resistance: ");
-  //Serial.print(resistance);
+  Serial.print("MQ135 RZero: ");
+  Serial.print(rzero);
+  Serial.print("\t Corrected RZero: ");
+  Serial.print(correctedRZero);
+  Serial.print("\t Resistance: ");
+  Serial.print(resistance);
   Serial.print("\t PPM: ");
   Serial.print(ppm);
   Serial.print("\t Corrected PPM: ");
@@ -71,6 +70,6 @@ void loop()
   lcdI2C.selectLine(2);                    // Set cursor at the begining of line 2
   lcdI2C.print(correctedPPM);                   // Print print String to LCD on second line
   lcdI2C.print("ppm CO2");
-  delay(25000);
+  delay(10000);
 
 }

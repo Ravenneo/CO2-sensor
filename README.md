@@ -8,7 +8,7 @@ I am facing some issues with the script and the Arduino Leonardo. Be aware with 
 
 -Instal MQ135 and Firmware Libraries in your Arduino Library folder
 
--Run Lab CO2 Sensor.ino 
+-Run Lab CO2 Sensor.ino __(In my code the MQ-135 Sensor is conected to Analogic In A2.)__
 
 -Lets MQ135 runs during 24h
 
@@ -30,4 +30,4 @@ Before you can use the sensor, it has to be calibrated check MQ135 Library> http
 
 For calibration check also: Trends in Atmospheric Carbon Dioxide> https://www.esrl.noaa.gov/gmd/ccgg/trends/gl_trend.html
 
-In my code the MQ-135 Sensor is conected to Analogic In A2.
+

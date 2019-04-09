@@ -1,10 +1,10 @@
 # CO2-sensor
 
-Important.  
+**Important.**  
 
-I am facing some issues with the script and the Arduino Leonardo. Be aware with the serial interface as in the Leonardo USB is manage by same chip.  I do not recomend use the program in Leonardo for now.
+I am facing some issues with the script and the Arduino Leonardo. Be aware with the serial interface as in the Leonardo USB is manage by same chip.  __I do not recomend use the program in **Leonardo** for now.__
 
-Lab CO2 Sensor
+**Lab CO2 Sensor**
 
 -Instal MQ135 and Firmware Libraries in your Arduino Library folder
 
@@ -12,7 +12,8 @@ Lab CO2 Sensor
 
 -Lets MQ135 runs during 24h
 
--Check in Serial Monitor your Rzero and substitute it in your MQ-135 Library. -Check global CO2 and do the same.
+-Check in Serial Monitor your Rzero and substitute it in your MQ-135 Library.
+-Check global CO2 and do the same.
 
 -If LCD is on but does not show numbers, you should play with the IC2 potenciometer 
 
@@ -20,7 +21,7 @@ Lab CO2 Sensor
 
 
 
-Help Links:
+**Help Links**
 
 
 Arduino Firmware circuito.io For I2C LCD Screen (I am using the screen with 3.3V pin): https://www.circuito.io/static/reply/index.html?solutionId=5ca9f8dc984b7f00308a37a9&solutionPath=storage.circuito.io

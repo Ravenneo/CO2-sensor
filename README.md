@@ -1,4 +1,9 @@
 # CO2-sensor
+
+Important.  
+
+I am facing some issues with the script and the Arduino Leonardo. Be aware with the serial interface as in the Leonardo USB is manage by same chip.  I do not recomend use the program in Leonardo for now.
+
 Lab CO2 Sensor
 
 -Instal MQ135 and Firmware Libraries in your Arduino Library folder

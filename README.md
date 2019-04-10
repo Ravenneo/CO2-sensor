@@ -1,8 +1,11 @@
 # CO2-sensor
 
 **Important.**  
+If you have a Leonardo board, be aware with the serial interface as in the Leonardo USB is manage by same chip.  
 
-I am facing some issues with the script and the Arduino Leonardo. Be aware with the serial interface as in the Leonardo USB is manage by same chip.  __I do not recomend use the program in **Leonardo** for now.__
+__Do not use the program in **Leonardo** with out change serial lines!.__
+
+The script and the Libraries work fine on the Arduino UNO.
 
 **Lab CO2 Sensor**
 
@@ -17,7 +20,9 @@ I am facing some issues with the script and the Arduino Leonardo. Be aware with 
 
 -If LCD is on but does not show numbers, you should play with the IC2 potenciometer 
 
--Wire in Arduino UNO (most of guides) it is different, the CristalLiquid screen is conected to Analogic IN. There are plenty of information in the links below 
+-In Arduino UNO the I2C CristalLiquid screen is conected to Analogic IN (A5-SCL and A4-SDA) In Leonardo is different, we should use Digital imput D2-SCL and D3-SDA
+
+There are plenty of information in the links below 
 
 
 

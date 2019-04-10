@@ -1,7 +1,7 @@
 # CO2-sensor
 
 **Important.**  
-If you have a Leonardo board, be aware with the serial interface as in the Leonardo USB is manage by same chip.  
+If you have a Leonardo board, be aware with the serial interface as in the Leonardo, the USB and the board itself are manage by same chip.  
 
 __Do not use the program in **Leonardo** with out change serial lines!.__
 

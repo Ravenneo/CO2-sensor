@@ -3,7 +3,7 @@
 **Important.**  
 If you have a Leonardo board, be aware with the serial interface as in the Leonardo, the USB and the board itself are manage by same chip.  
 
-__Do not use the program in **Leonardo** with out change serial lines!.__
+__Do not use the program in **Leonardo** with out change serial lines (serial->serial1) !.__
 
 The script and the Libraries work fine on the Arduino UNO.
 
